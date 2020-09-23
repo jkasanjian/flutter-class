@@ -1,3 +1,3 @@
 # Code for Flutter course projects
-The Complete 2020 Flutter Development Bootcamp with Dart
-by The App Brewery
+#### Course title: The Complete 2020 Flutter Development Bootcamp with Dart
+##### The App Brewery
