@@ -4,25 +4,32 @@ import 'dart:math';
 void main() {
   return runApp(
     MaterialApp(
-      home: Scaffold(
-        backgroundColor: Colors.blue,
-        appBar: AppBar(
-          centerTitle: true,
-          title: Text('Ask Me Anything'),
-          backgroundColor: Colors.blue.shade900,
-        ),
-        body: BallPage(),
-      ),
+      home: BallPage(),
     ),
   );
 }
 
-class BallPage extends StatefulWidget {
+class BallPage extends StatelessWidget {
   @override
-  _BallPageState createState() => _BallPageState();
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.blue,
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text('Ask Me Anything'),
+        backgroundColor: Colors.blue.shade900,
+      ),
+      body: Ball(),
+    );
+  }
 }
 
-class _BallPageState extends State<BallPage> {
+class Ball extends StatefulWidget {
+  @override
+  _BallState createState() => _BallState();
+}
+
+class _BallState extends State<Ball> {
   int ballNum = 1;
 
   void updateAnswer() {
