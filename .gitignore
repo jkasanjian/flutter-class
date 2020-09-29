@@ -69,3 +69,5 @@
 !**/ios/**/default.perspectivev3
 !/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
 magic-8-ball/ios/Flutter/flutter_export_environment.sh
+xylophone/.flutter-plugins-dependencies
+xylophone/ios/Flutter/flutter_export_environment.sh
