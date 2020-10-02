@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'question.dart';
+import 'quiz_brain.dart';
+
+QuizBrain quizBrain = QuizBrain();
 
 void main() => runApp(Quizzler());
 
@@ -28,44 +30,24 @@ class QuizPage extends StatefulWidget {
 class _QuizPageState extends State<QuizPage> {
   List<Icon> scoreKeeper = [];
 
-  List<Question> questions = [
-    Question(q: 'You can lead a cow down stairs but not up stairs.', a: false),
-    Question(
-        q: 'Approximately one quarter of human bones are in the feet.',
-        a: true),
-    Question(q: 'A slug\'s blood is green.', a: true),
-  ];
-
-  int qNum = 0;
-
-  void updateIdx() {
+  void checkAnswer(bool userAns) {
     setState(() {
-      qNum++;
-      if (qNum >= questions.length) {
-        qNum = 0;
+      if (quizBrain.getQuestionAnswer() == userAns) {
+        scoreKeeper.add(
+          Icon(
+            Icons.check,
+            color: Colors.green,
+          ),
+        );
+      } else {
+        scoreKeeper.add(
+          Icon(
+            Icons.close,
+            color: Colors.red,
+          ),
+        );
       }
-    });
-  }
-
-  void addCheck() {
-    setState(() {
-      scoreKeeper.add(
-        Icon(
-          Icons.check,
-          color: Colors.green,
-        ),
-      );
-    });
-  }
-
-  void addX() {
-    setState(() {
-      scoreKeeper.add(
-        Icon(
-          Icons.close,
-          color: Colors.red,
-        ),
-      );
+      quizBrain.nextQuestion();
     });
   }
 
@@ -81,7 +63,7 @@ class _QuizPageState extends State<QuizPage> {
             padding: EdgeInsets.all(10.0),
             child: Center(
               child: Text(
-                questions[qNum].text,
+                quizBrain.getQuestionText(),
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 25.0,
@@ -106,12 +88,7 @@ class _QuizPageState extends State<QuizPage> {
               ),
               onPressed: () {
                 //The user picked true.
-                if (questions[qNum].answer) {
-                  addCheck();
-                } else {
-                  addX();
-                }
-                updateIdx();
+                checkAnswer(true);
               },
             ),
           ),
@@ -130,12 +107,7 @@ class _QuizPageState extends State<QuizPage> {
               ),
               onPressed: () {
                 //The user picked false.
-                if (!(questions[qNum]).answer) {
-                  addCheck();
-                } else {
-                  addX();
-                }
-                updateIdx();
+                checkAnswer(false);
               },
             ),
           ),
