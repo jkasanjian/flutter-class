@@ -5,6 +5,7 @@ class Screen0 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         backgroundColor: Colors.purple,
         title: Text('Screen 0'),
       ),
@@ -16,6 +17,7 @@ class Screen0 extends StatelessWidget {
               child: Text('Go To Screen 1'),
               onPressed: () {
                 //Navigate to Screen 1
+                Navigator.pushNamed(context, '/first');
               },
             ),
             RaisedButton(
@@ -23,6 +25,7 @@ class Screen0 extends StatelessWidget {
               child: Text('Go To Screen 2'),
               onPressed: () {
                 //Navigate to Screen 2
+                Navigator.pushNamed(context, '/second');
               },
             ),
           ],
