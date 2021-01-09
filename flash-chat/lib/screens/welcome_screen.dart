@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flash_chat/screens/login_screen.dart';
 import 'package:flash_chat/screens/registration_screen.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:firebase_core/firebase_core.dart';
 import '../components/rounded_button.dart';
 
 class WelcomeScreen extends StatefulWidget {
@@ -19,6 +20,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
   @override
   void initState() {
     super.initState();
+    Firebase.initializeApp().whenComplete(() => print('Completed'));
 
     controller =
         AnimationController(duration: Duration(seconds: 1), vsync: this);
